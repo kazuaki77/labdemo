@@ -11,10 +11,7 @@ spec:
     matchLabels:
       app: test
   strategy: 
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
+    type: Recreate
   template:
     metadata:
       creationTimestamp: null
@@ -22,7 +19,5 @@ spec:
         app: test
     spec:
       containers:
-      - image: httpd:alpine3.18
+      - image: httpd:alpine3.19
         name: httpd
-        command: ["/bin/bash -c"]
-        args: ["sleep 5; exit 1"]
