@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+  name: nginx-storage
+spec:
+  containers:
+    - image: nginx:latest
+      name: nginx
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - mountPath: /scratch
+          name: scratch-volume
+    - image: httpd:latest
+      name: httpd
+      ports:
+         - containerPort: 8081
+      volumeMounts:
+      - mountPath: /scratch
+        name: scratch-volume
+  volumes:
+  - name: scratch-volume
+    persistentVolumeClaim:
+      claimName: mealie-data
+

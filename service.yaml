@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mealie
+  name: mealie
+  namespace: mealie
+  resourceVersion: "31963"
+  uid: 78e7e346-46e0-4db2-aa34-c1a21142a416
+spec:
+  clusterIP: 10.43.22.205
+  clusterIPs:
+  - 10.43.22.205
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 9000
+    protocol: TCP
+    targetPort: 9000
+  selector:
+    app: mealie
+  type: LoadBalancer
